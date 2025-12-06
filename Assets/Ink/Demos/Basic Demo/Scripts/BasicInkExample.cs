@@ -1,11 +1,13 @@
 ﻿using System;
 using Ink.Runtime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
     public static event Action<Story> OnCreateStory;
+	[SerializeField] GameObject player;
 	
     void Awake () {
 		// Remove the default message
@@ -65,6 +67,7 @@ public class BasicInkExample : MonoBehaviour {
 			choice.onClick.AddListener(delegate{
 				RemoveChildren();
 				Cursor.lockState = CursorLockMode.Locked; // locks the cursor once the dialogue is finished
+				Variables.Object(player).Set("talking", false); // Sets the player's variable "talking" to false
 			});
 		}
 	}
@@ -103,7 +106,7 @@ public class BasicInkExample : MonoBehaviour {
 	void RemoveChildren () {
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i) {
-			Destroy (canvas.transform.GetChild (i).gameObject);
+            Destroy(canvas.transform.GetChild(i).gameObject);
 		}
 	}
 
