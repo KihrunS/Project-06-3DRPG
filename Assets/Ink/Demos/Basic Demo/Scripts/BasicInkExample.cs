@@ -64,6 +64,7 @@ public class BasicInkExample : MonoBehaviour {
 			Button choice = CreateChoiceView("Done");
 			choice.onClick.AddListener(delegate{
 				RemoveChildren();
+				Cursor.lockState = CursorLockMode.Locked; // locks the cursor once the dialogue is finished
 			});
 		}
 	}
