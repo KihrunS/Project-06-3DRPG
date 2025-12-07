@@ -68,6 +68,14 @@ public class BasicInkExample : MonoBehaviour {
 				RemoveChildren();
 				Cursor.lockState = CursorLockMode.Locked; // locks the cursor once the dialogue is finished
 				Variables.Object(player).Set("talking", false); // Sets the player's variable "talking" to false
+				try
+				{
+					Destroy(GameObject.Find("Barricade"));
+				}
+				catch
+				{
+					return;
+				}
 			});
 		}
 	}
