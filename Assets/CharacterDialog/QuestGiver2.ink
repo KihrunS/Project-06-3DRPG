@@ -39,7 +39,7 @@ Welcome back adventurer!
     
 == quest1 ==
     * ...
-    - - - Anyways, I have some targets set up in this warehouse behind me. What do you say you get in some target practice?
+    - - - Anyways, I have some moving target doohickeys set up in this warehouse behind me. What do you say you get in some target practice?
     -> quest2
 
 == quest2 ==
