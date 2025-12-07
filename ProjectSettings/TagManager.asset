@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - npc
   - interactable
+  - target
+  - donotdestroy
   layers:
   - Default
   - TransparentFX

@@ -136,7 +136,10 @@ public class BasicInkExample : MonoBehaviour {
 	void RemoveChildren () {
 		int childCount = canvas.transform.childCount;
 		for (int i = childCount - 1; i >= 0; --i) {
-            Destroy(canvas.transform.GetChild(i).gameObject);
+			if (!canvas.transform.GetChild(i).gameObject.CompareTag("donotdestroy"))
+			{
+                Destroy(canvas.transform.GetChild(i).gameObject);
+            }
 		}
 	}
 
