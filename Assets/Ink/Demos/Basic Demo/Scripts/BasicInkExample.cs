@@ -65,16 +65,38 @@ public class BasicInkExample : MonoBehaviour {
 			
 			Button choice = CreateChoiceView("Done");
 			choice.onClick.AddListener(delegate{
+				int gameState = (int)Variables.Object(player).Get("gameState");
 				RemoveChildren();
 				Cursor.lockState = CursorLockMode.Locked; // locks the cursor once the dialogue is finished
 				Variables.Object(player).Set("talking", false); // Sets the player's variable "talking" to false
-				try
+				if (gameState == 0)
 				{
-					Destroy(GameObject.Find("Barricade"));
+					try
+					{
+						Destroy(GameObject.Find("Barricade")); // Opens the store
+					}
+					catch
+					{
+						return;
+					}
 				}
-				catch
+				else if (gameState == 1)
 				{
-					return;
+					try
+					{
+                        Destroy(GameObject.Find("Barricade2")); // Opens warehouse
+                    }
+					catch
+					{
+						return;
+					}
+					if (!(bool)Variables.Object(player).Get("armed"))
+					{
+						Variables.Object(player).Set("armed", true);
+						MeshRenderer gun = GameObject.Find("blasterD").GetComponent<MeshRenderer>();
+						gun.enabled = true;
+
+                    }
 				}
 			});
 		}
